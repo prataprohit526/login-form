@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://34.225.132.160:8002/api")
+      .then((response) => response.json())
+      .then((data) => setApiData(data))
+      .catch((error) => console.log(error));
+  }, []);
 
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -69,6 +77,7 @@ function App() {
           </div>
         </div>
       </div>
+
       <div className="input-feild">
         <input
           type="email"
@@ -77,7 +86,7 @@ function App() {
           onChange={handleEmailChange}
         />
         <button onClick={handleButtonClick}>Click me</button>
-        {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+        {emailError && <h2 style={{ color: "red" }}>{emailError}</h2>}
       </div>
     </div>
   );
