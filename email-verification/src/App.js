@@ -1,5 +1,27 @@
+import React, { useState } from "react";
 import "./App.css";
+
 function App() {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    if (!validateEmail(email)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
   return (
     <div className="App">
       <div className="App-data">
@@ -12,7 +34,7 @@ function App() {
             <h1>Work</h1>
           </div>
           <div className="content">
-            <h2>Suite of Business Support Services </h2>
+            <h2>Suite of Business Support Services</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               laoreet nisi at elit venenatis fringilla. Cras ut semper quam,
@@ -48,9 +70,14 @@ function App() {
         </div>
       </div>
       <div className="input-feild">
-        <input type="email" placeholder="Enter email" />
-
-        <button>Click me </button>
+        <input
+          type="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={handleEmailChange}
+        />
+        <button onClick={handleButtonClick}>Click me</button>
+        {emailError && <p style={{ color: "red" }}>{emailError}</p>}
       </div>
     </div>
   );

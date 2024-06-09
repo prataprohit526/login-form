@@ -102,6 +102,7 @@ input {
   cursor: pointer;
   left: 40px;
   border-radius: 5px;
+  
 }
 
 /* Media Queries for Responsiveness */
@@ -146,7 +147,7 @@ input {
 @media (max-width: 768px) {
   .about h1 {
     font-size: 50px;
-    margin-left: 0;
+    margin-left: 40px;
     text-align: center;
   }
 
@@ -158,23 +159,27 @@ input {
   .about .content p {
     font-size: 16px;
     text-align: center;
+    margin-top: 0px;
   }
 
   .about img {
-    margin: 20px auto;
     display: block;
+    margin-left: 205px;
+    margin-top: 8px;
+    margin-bottom: 12px;
   }
 
   .input-feild input {
-    width: 200px;
+    width: 285px;
     font-size: medium;
+    margin-left: 95px;
   }
 
   .input-feild button {
     width: 150px;
     font-size: 20px;
-    left: 0;
     margin-top: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -188,7 +193,9 @@ input {
   }
 
   .about .content p {
-    font-size: 14px;
+    font-size: 14px;.App-data {
+      flex-direction: row; /* Arrange children in a row */
+    }
   }
 
   .feature div {
@@ -217,12 +224,39 @@ input {
   }
 
   .about {
-    width: 50%;
+    width: 40%;
     padding-right: 20px;
   }
 
   .feature {
-    width: 50%;
+    width: 60%;
     justify-content: flex-start;
   }
+}
+@media (max-width: 475px) {
+  .App-data {
+    flex-direction: row; /* Arrange children in a row */
+  }
+  .about img {
+    display: block;
+    margin-left: 20px;
+    margin-top: 8px;
+    
+    height: 100px;
+  }
+  .about h1{
+    font-size: 45px;
+  }
+  .input-feild input {
+    width: 310px;
+    margin-left: 20px;
+    font-size: medium;
+    height: auto;
+  }
+  .input-feild button{
+    width: 150px;
+    margin-left: 20%;
+    height: auto;
+  }
+
 }
